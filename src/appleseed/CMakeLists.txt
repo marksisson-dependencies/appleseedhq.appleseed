@@ -1632,6 +1632,7 @@ set (renderer_modeling_bsdf_sources
     renderer/modeling/bsdf/lambertianbrdf.h
     renderer/modeling/bsdf/metalbrdf.cpp
     renderer/modeling/bsdf/metalbrdf.h
+    renderer/modeling/bsdf/microfacetbrdfwrapper.h
     renderer/modeling/bsdf/microfacethelper.cpp
     renderer/modeling/bsdf/microfacethelper.h
     renderer/modeling/bsdf/nullbsdf.h
@@ -1702,6 +1703,10 @@ set (renderer_modeling_camera_sources
     renderer/modeling/camera/fisheyelenscamera.cpp
     renderer/modeling/camera/fisheyelenscamera.h
     renderer/modeling/camera/icamerafactory.h
+    renderer/modeling/camera/lenscamera.cpp
+    renderer/modeling/camera/lenscamera.h
+    renderer/modeling/camera/multilenscamera.cpp
+    renderer/modeling/camera/multilenscamera.h
     renderer/modeling/camera/orthographiccamera.cpp
     renderer/modeling/camera/orthographiccamera.h
     renderer/modeling/camera/perspectivecamera.cpp
@@ -1986,6 +1991,10 @@ source_group ("renderer\\modeling\\object" FILES
 )
 
 set (renderer_modeling_postprocessingstage_sources
+    renderer/modeling/postprocessingstage/bloompostprocessingstage.cpp
+    renderer/modeling/postprocessingstage/bloompostprocessingstage.h
+    renderer/modeling/postprocessingstage/chromaticaberrationpostprocessingstage.cpp
+    renderer/modeling/postprocessingstage/chromaticaberrationpostprocessingstage.h
     renderer/modeling/postprocessingstage/colormappostprocessingstage.cpp
     renderer/modeling/postprocessingstage/colormappostprocessingstage.h
     renderer/modeling/postprocessingstage/ipostprocessingstagefactory.cpp
@@ -1998,6 +2007,8 @@ set (renderer_modeling_postprocessingstage_sources
     renderer/modeling/postprocessingstage/postprocessingstagetraits.h
     renderer/modeling/postprocessingstage/renderstamppostprocessingstage.cpp
     renderer/modeling/postprocessingstage/renderstamppostprocessingstage.h
+    renderer/modeling/postprocessingstage/tonemappostprocessingstage.cpp
+    renderer/modeling/postprocessingstage/tonemappostprocessingstage.h
     renderer/modeling/postprocessingstage/vignettepostprocessingstage.cpp
     renderer/modeling/postprocessingstage/vignettepostprocessingstage.h
 )
@@ -2006,6 +2017,35 @@ list (APPEND appleseed_sources
 )
 source_group ("renderer\\modeling\\postprocessingstage" FILES
     ${renderer_modeling_postprocessingstage_sources}
+)
+
+set (renderer_modeling_postprocessingstage_effect_sources
+    renderer/modeling/postprocessingstage/effect/additiveblendapplier.cpp
+    renderer/modeling/postprocessingstage/effect/additiveblendapplier.h
+    renderer/modeling/postprocessingstage/effect/brightpassapplier.cpp
+    renderer/modeling/postprocessingstage/effect/brightpassapplier.h
+    renderer/modeling/postprocessingstage/effect/chromaticaberrationapplier.cpp
+    renderer/modeling/postprocessingstage/effect/chromaticaberrationapplier.h
+    renderer/modeling/postprocessingstage/effect/clampcolorsapplier.cpp
+    renderer/modeling/postprocessingstage/effect/clampcolorsapplier.h
+    renderer/modeling/postprocessingstage/effect/imageeffectapplier.cpp
+    renderer/modeling/postprocessingstage/effect/imageeffectapplier.h
+    renderer/modeling/postprocessingstage/effect/imageeffectjob.cpp
+    renderer/modeling/postprocessingstage/effect/imageeffectjob.h
+    renderer/modeling/postprocessingstage/effect/resampleapplier.cpp
+    renderer/modeling/postprocessingstage/effect/resampleapplier.h
+    renderer/modeling/postprocessingstage/effect/resamplex2applier.cpp
+    renderer/modeling/postprocessingstage/effect/resamplex2applier.h
+    renderer/modeling/postprocessingstage/effect/tonemapapplier.cpp
+    renderer/modeling/postprocessingstage/effect/tonemapapplier.h
+    renderer/modeling/postprocessingstage/effect/vignetteapplier.cpp
+    renderer/modeling/postprocessingstage/effect/vignetteapplier.h
+)
+list (APPEND appleseed_sources
+    ${renderer_modeling_postprocessingstage_effect_sources}
+)
+source_group ("renderer\\modeling\\postprocessingstage\\effect" FILES
+    ${renderer_modeling_postprocessingstage_effect_sources}
 )
 
 set (renderer_modeling_project_sources
